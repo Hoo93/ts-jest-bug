@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ES6",
+    "target": "ES2021",
     "module": "commonjs",
     "outDir": "./dist",  // 컴파일된 파일이 저장될 디렉토리
     "rootDir": ".",  // 소스 파일의 루트 디렉토리

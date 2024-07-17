@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package sample;
+
+import "google/protobuf/wrappers.proto";
+
+// Enum definition
+enum BookingStatus {
+  UNKNOWN = 0;
+  AVAILABLE = 1;
+  UNAVAILABLE = 2;
+}
+
+// Message definition
+message ModifyBusinessSimpleReq {
+  repeated string businessIds = 1;
+  BookingStatus bookingStatus = 2;
+  int32 bookingAvailableValue = 3;
+  google.protobuf.StringValue name = 4;
+  google.protobuf.StringValue desc = 5;
+  google.protobuf.BoolValue isImp = 6;
+}
+
+// Service definition
+service BusinessService {
+  rpc ModifyBusiness (ModifyBusinessSimpleReq) returns (ModifyBusinessSimpleRes);
+}
+
+// Response message
+message ModifyBusinessSimpleRes {
+  google.protobuf.StringValue result = 1;
+  google.protobuf.BoolValue success = 2;
+}
