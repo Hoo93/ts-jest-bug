@@ -28,9 +28,9 @@ export interface ModifyBusinessSimpleReq {
      */
     bookingStatus: BookingStatus;
     /**
-     * @generated from protobuf field: int32 bookingAvailableValue = 3;
+     * @generated from protobuf field: optional int32 bookingAvailableValue = 3;
      */
-    bookingAvailableValue: number;
+    bookingAvailableValue?: number;
     /**
      * @generated from protobuf field: google.protobuf.StringValue name = 4;
      */
@@ -60,6 +60,19 @@ export interface ModifyBusinessSimpleRes {
     success?: BoolValue;
 }
 /**
+ * @generated from protobuf message sample.OptionalWrapperTest
+ */
+export interface OptionalWrapperTest {
+    /**
+     * @generated from protobuf field: google.protobuf.StringValue wrapperString = 1;
+     */
+    wrapperString?: StringValue;
+    /**
+     * @generated from protobuf field: optional string optionalString = 2;
+     */
+    optionalString?: string;
+}
+/**
  * Enum definition
  *
  * @generated from protobuf enum sample.BookingStatus
@@ -84,7 +97,7 @@ class ModifyBusinessSimpleReq$Type extends MessageType<ModifyBusinessSimpleReq> 
         super("sample.ModifyBusinessSimpleReq", [
             { no: 1, name: "businessIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 9 /*ScalarType.STRING*/ },
             { no: 2, name: "bookingStatus", kind: "enum", T: () => ["sample.BookingStatus", BookingStatus] },
-            { no: 3, name: "bookingAvailableValue", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
+            { no: 3, name: "bookingAvailableValue", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
             { no: 4, name: "name", kind: "message", T: () => StringValue },
             { no: 5, name: "desc", kind: "message", T: () => StringValue },
             { no: 6, name: "isImp", kind: "message", T: () => BoolValue }
@@ -94,7 +107,6 @@ class ModifyBusinessSimpleReq$Type extends MessageType<ModifyBusinessSimpleReq> 
         const message = globalThis.Object.create((this.messagePrototype!));
         message.businessIds = [];
         message.bookingStatus = 0;
-        message.bookingAvailableValue = 0;
         if (value !== undefined)
             reflectionMergePartial<ModifyBusinessSimpleReq>(this, message, value);
         return message;
@@ -110,7 +122,7 @@ class ModifyBusinessSimpleReq$Type extends MessageType<ModifyBusinessSimpleReq> 
                 case /* sample.BookingStatus bookingStatus */ 2:
                     message.bookingStatus = reader.int32();
                     break;
-                case /* int32 bookingAvailableValue */ 3:
+                case /* optional int32 bookingAvailableValue */ 3:
                     message.bookingAvailableValue = reader.int32();
                     break;
                 case /* google.protobuf.StringValue name */ 4:
@@ -140,8 +152,8 @@ class ModifyBusinessSimpleReq$Type extends MessageType<ModifyBusinessSimpleReq> 
         /* sample.BookingStatus bookingStatus = 2; */
         if (message.bookingStatus !== 0)
             writer.tag(2, WireType.Varint).int32(message.bookingStatus);
-        /* int32 bookingAvailableValue = 3; */
-        if (message.bookingAvailableValue !== 0)
+        /* optional int32 bookingAvailableValue = 3; */
+        if (message.bookingAvailableValue !== undefined)
             writer.tag(3, WireType.Varint).int32(message.bookingAvailableValue);
         /* google.protobuf.StringValue name = 4; */
         if (message.name)
@@ -215,6 +227,59 @@ class ModifyBusinessSimpleRes$Type extends MessageType<ModifyBusinessSimpleRes> 
  * @generated MessageType for protobuf message sample.ModifyBusinessSimpleRes
  */
 export const ModifyBusinessSimpleRes = new ModifyBusinessSimpleRes$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class OptionalWrapperTest$Type extends MessageType<OptionalWrapperTest> {
+    constructor() {
+        super("sample.OptionalWrapperTest", [
+            { no: 1, name: "wrapperString", kind: "message", T: () => StringValue },
+            { no: 2, name: "optionalString", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ }
+        ]);
+    }
+    create(value?: PartialMessage<OptionalWrapperTest>): OptionalWrapperTest {
+        const message = globalThis.Object.create((this.messagePrototype!));
+        if (value !== undefined)
+            reflectionMergePartial<OptionalWrapperTest>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: OptionalWrapperTest): OptionalWrapperTest {
+        let message = target ?? this.create(), end = reader.pos + length;
+        while (reader.pos < end) {
+            let [fieldNo, wireType] = reader.tag();
+            switch (fieldNo) {
+                case /* google.protobuf.StringValue wrapperString */ 1:
+                    message.wrapperString = StringValue.internalBinaryRead(reader, reader.uint32(), options, message.wrapperString);
+                    break;
+                case /* optional string optionalString */ 2:
+                    message.optionalString = reader.string();
+                    break;
+                default:
+                    let u = options.readUnknownField;
+                    if (u === "throw")
+                        throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
+                    let d = reader.skip(wireType);
+                    if (u !== false)
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d);
+            }
+        }
+        return message;
+    }
+    internalBinaryWrite(message: OptionalWrapperTest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* google.protobuf.StringValue wrapperString = 1; */
+        if (message.wrapperString)
+            StringValue.internalBinaryWrite(message.wrapperString, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* optional string optionalString = 2; */
+        if (message.optionalString !== undefined)
+            writer.tag(2, WireType.LengthDelimited).string(message.optionalString);
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
+}
+/**
+ * @generated MessageType for protobuf message sample.OptionalWrapperTest
+ */
+export const OptionalWrapperTest = new OptionalWrapperTest$Type();
 /**
  * @generated ServiceType for protobuf service sample.BusinessService
  */

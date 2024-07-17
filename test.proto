@@ -15,7 +15,7 @@ enum BookingStatus {
 message ModifyBusinessSimpleReq {
   repeated string businessIds = 1;
   BookingStatus bookingStatus = 2;
-  int32 bookingAvailableValue = 3;
+  optional int32 bookingAvailableValue = 3;
   google.protobuf.StringValue name = 4;
   google.protobuf.StringValue desc = 5;
   google.protobuf.BoolValue isImp = 6;
@@ -30,4 +30,9 @@ service BusinessService {
 message ModifyBusinessSimpleRes {
   google.protobuf.StringValue result = 1;
   google.protobuf.BoolValue success = 2;
+}
+
+message OptionalWrapperTest {
+  google.protobuf.StringValue wrapperString = 1;
+  optional string optionalString = 2;
 }
