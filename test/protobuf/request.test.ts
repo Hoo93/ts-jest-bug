@@ -34,4 +34,32 @@ describe('ModifyBusinessSimpleReq Test', () => {
       expect(request.name.value).toBeUndefined();
     }).toThrow();
   });
+
+  it('입력은 했으나 value 를 설정하지 않은 StringValue 값은 "" 를 가진다..', () => {
+    const request = ModifyBusinessSimpleReq.create({
+      businessIds: ['business1', 'business2'],
+      bookingStatus: 1, // AVAILABLE
+      bookingAvailableValue: 10,
+      name: StringValue.create(),
+      desc: StringValue.create({ value: 'Description of Test Business' }),
+      isImp: BoolValue.create({ value: true }),
+    });
+
+    expect(request.name?.value).toBe('');
+    expect(request.name?.value).toBe('');
+  });
+
+  describe('optional field bookingAvailableValue Test', () => {
+    it('optional field를 입력하지 않은 경우 undefined 를 리턴한다.', () => {
+      const request = ModifyBusinessSimpleReq.create({
+        businessIds: ['business1', 'business2'],
+        bookingStatus: 1, // AVAILABLE
+        name: StringValue.create(),
+        desc: StringValue.create({ value: 'Description of Test Business' }),
+        isImp: BoolValue.create({ value: true }),
+      });
+
+      expect(request.bookingAvailableValue).toBeUndefined();
+    });
+  });
 });
