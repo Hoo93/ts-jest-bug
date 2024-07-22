@@ -23,6 +23,7 @@
     "@protobuf-ts/grpc-transport": "^2.9.4",
     "@protobuf-ts/runtime": "^2.9.4",
     "@protobuf-ts/runtime-rpc": "^2.9.4",
+    "date-fns": "2.27.0",
     "google-protobuf": "^3.21.4",
     "prettier": "^3.3.2",
     "shx": "^0.3.4"
