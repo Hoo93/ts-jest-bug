@@ -10,6 +10,7 @@
     "protoc": "yarn run protoc:pre && (shx mkdir -p generated || true) && protoc --ts_out ./generated --proto_path . test.proto"
   },
   "devDependencies": {
+    "@julr/factorify": "^1.0.1",
     "@protobuf-ts/plugin": "^2.9.4",
     "@types/jest": "^29.5.12",
     "jest": "^29.7.0",
@@ -25,6 +26,8 @@
     "@protobuf-ts/runtime-rpc": "^2.9.4",
     "date-fns": "2.27.0",
     "google-protobuf": "^3.21.4",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.11.0",
     "prettier": "^3.3.2",
     "shx": "^0.3.4"
   }
