@@ -2,9 +2,9 @@ import { MemberFactory } from '../defineFactory';
 import { defineFactorifyConfig } from '@julr/factorify';
 
 describe('MemberFactory Test', () => {
-
+  let disconnect:any;
   beforeAll(() => {
-    const disconnect = defineFactorifyConfig({
+    disconnect = defineFactorifyConfig({
       casing:{
         insert:'camel',
         return:'camel'
@@ -24,11 +24,15 @@ describe('MemberFactory Test', () => {
     })
   })
 
-  it('', async () => {
+  it('MemberFactory Create Test', async () => {
     // Given
     const user = await MemberFactory.create()
+  });
 
-    // When
+  it('MemberFactory With LoginHistory Test', async () => {
+    // Given
+    const user = await MemberFactory.with('loginHistories',1).create()
+
     // Then
   });
 
