@@ -10,7 +10,8 @@
     "forceConsistentCasingInFileNames": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "allowJs": true
+    "allowJs": true,
+    "moduleResolution": "node"
   },
   "include": ["src/**/*","test/**/*"],
   "exclude": ["node_modules", "dist"]
